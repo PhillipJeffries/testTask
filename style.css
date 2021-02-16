@@ -13,12 +13,14 @@ ul {
 .container {
     max-width: 600px;
     margin: 0 auto;
+
 }
 
 .product-header-list {
     display: flex;
     margin: 0 5px;
     overflow: auto;
+    min-width: 0;
 }
 
 .product-header-list-item {
@@ -30,7 +32,12 @@ ul {
     margin-right: 10px;
     line-height: 15px;
     background-color: #e8e8e8;
+    min-width: 0;
+    overflow: hidden;
+    
 }
+
+
 
 .product-header-list-item_active {
     background-color: white;
@@ -46,6 +53,7 @@ ul {
 
     border: 2px #959595 solid;
     padding: 10px;
+    min-width: 0;
 }
 
 .product-list-item {

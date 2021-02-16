@@ -50,18 +50,26 @@ let productAdd = (name) => {
     productList.appendChild(productListItem)
 }
 
+let cleanClass = () => {
+    let headerItems = document.querySelectorAll('.product-header-list-item');
+    for(let i=0;i<headerItems.length;i++){headerItems[i].classList.remove('product-header-list-item_active')};
+};
+
 
 
 const productHeaderAdd = (arr) => {
     for(let i=0; i<arr.length; i++) 
-    {
+    {   
+        
         let headerListItem = document.createElement('li');
         headerListItem.classList.add('product-header-list-item');
+
         headerListItem.textContent = arr[i].categoryName;
         productHeaderList.appendChild(headerListItem);
         headerListItem.value = arr[i].categoryId;
         
-        headerListItem.addEventListener('click',(evt)=>{headerListItem.classList.remove('product-header-list-item_active'); evt.target.classList.add('product-header-list-item_active'); productList.innerHTML = ''; for(let i=0; i<products.length;i++){
+        
+        headerListItem.addEventListener('click',(evt)=>{  cleanClass(); evt.target.classList.add('product-header-list-item_active'); productList.innerHTML = ''; for(let i=0; i<products.length;i++){
                                                                        
                                                                           if  (evt.target.value === products[i].categoryId){ productAdd(products[i].productName) }                                       
                                                                             }})
