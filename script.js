@@ -43,24 +43,45 @@ const productHeaderList = document.querySelector('.product-header-list');
 const productList = document.querySelector('.product-list');
 
 
+let productAdd = (name) => {
+    let productListItem = document.createElement('li');
+    productListItem.classList.add('product-list-item');
+    productListItem.innerHTML = `<span class="product-text">${name}</span>`;
+    productList.appendChild(productListItem)
+}
+
 
 
 const productHeaderAdd = (arr) => {
-    for(let i=0; i<arr.length; i++) {
-        productHeaderList.insertAdjacentHTML('beforeend', `<li class="product-header-list-item">${arr[i].categoryName}</li>`);
+    for(let i=0; i<arr.length; i++) 
+    {
+        let headerListItem = document.createElement('li');
+        headerListItem.classList.add('product-header-list-item');
+        headerListItem.textContent = arr[i].categoryName;
+        productHeaderList.appendChild(headerListItem);
+        headerListItem.value = arr[i].categoryId;
+        
+        headerListItem.addEventListener('click',(evt)=>{headerListItem.classList.remove('product-header-list-item_active'); evt.target.classList.add('product-header-list-item_active'); productList.innerHTML = ''; for(let i=0; i<products.length;i++){
+                                                                       
+                                                                          if  (evt.target.value === products[i].categoryId){ productAdd(products[i].productName) }                                       
+                                                                            }})
+                                                        
     }
-};
+}
 
+/*
 const productAdd = (arr) => {
     for(let i=0; i<arr.length; i++) {
-        productList.insertAdjacentHTML('beforeend', `<li class="product-list-item">
-                                                        <span class="product-text">${arr[i].productName}</span>
-                                                    </li>`)
+        let productListItem = document.createElement('li');
+        productListItem.classList.add('product-list-item');
+        productListItem.innerHTML = `<span class="product-text">${arr[i].productName}</span>`
+        productList.appendChild(productListItem)
     }
 };
+*/
 
 productHeaderAdd(categories);
 
-productAdd(products);
+//productAdd(products);
 
 console.log(productHeaderList);

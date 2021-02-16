@@ -29,12 +29,21 @@ ul {
     padding: 10px;
     margin-right: 10px;
     line-height: 15px;
+    background-color: #e8e8e8;
+}
+
+.product-header-list-item_active {
+    background-color: white;
+}
+
+.product-header-list-item:hover {
+    cursor: pointer;
 }
 
 .product-list {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+
     border: 2px #959595 solid;
     padding: 10px;
 }
